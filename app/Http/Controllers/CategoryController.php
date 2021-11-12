@@ -54,4 +54,11 @@ class CategoryController extends Controller
             $category->delete();
             return redirect('/');;
     }
+
+    public function editCategory(Category $category){
+            return view("pages.category-edit", compact('category'));
+            
+        $error = ['code' => 403, 'message' => 'Jūs neturite teisės į šį puslapį.'];
+        return view("pages.error", compact('error'));
+    }
 }

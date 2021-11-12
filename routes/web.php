@@ -19,7 +19,6 @@ Route::get('/', [SkateController::class, 'index']);
 Route::get('/new-skate', [SkateController::class, 'newSkateForm']);
 Route::post('/store-skate', [SkateController::class, 'storeSkates']);
 Route::get('/skate/{skate}', [SkateController::class, 'showSkates']);
-// TODO: susitvarkyt linkus i routus
 Route::get('/skate/{skate}/edit', [SkateController::class, 'viewEditSkateForm']);
 Route::patch('/skate/{skate}/edit', [SkateController::class, 'updateSkate']);
 Route::get('/skate/{skate}/delete/ask', [SkateController::class, 'viewRemoveSkateForm']);
@@ -36,6 +35,12 @@ Route::get('/category/{category}/edit', [CategoryController::class, 'viewCategor
 
 // Dashboard
 Route::get('/dashboard', [SkateController::class, 'dashboard'])->name('dashboard');
+Route::get('/skateboards', [SkateController::class, 'skateboards'])->name('skateboards');
+
+// Logout
+Route::group(['middleware' => ['auth']], function() {
+    Route::get('/logout', [SkateController::class, 'perform'])->name('logout.perform');
+ });
 
 
 require __DIR__.'/auth.php';

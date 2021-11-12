@@ -8,7 +8,7 @@
     </div>
 
     <div class="alert alert-dark py-5 text-center text-white" style="background-color: rgb(74, 75, 80);" role="alert">
-        <h1 style="font-family:Arial Black; font-size:200%;"> Mūsų siūlomos riedlentės</h1>
+        <h1 style="font-family:Arial Black; font-size:200%;"> Skateboards We Offers </h1>
     </div>
     
     <div class="row">

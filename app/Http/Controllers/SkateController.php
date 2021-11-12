@@ -57,7 +57,7 @@ class SkateController extends Controller
         if (Gate::allows('edit', $skate)) {
             return view("pages.skates-edit", compact('skate'));
         }
-        $error = ['code' => 403, 'message' => 'Jūs neturite teisės į šį puslapį.'];
+        $error = ['code' => 403, 'message' => 'You are not authorized to access this page.'];
         return view("pages.error", compact('error'));
     }
 
@@ -80,7 +80,7 @@ class SkateController extends Controller
 
             return redirect('/');
         }
-        $error = ['code' => 403, 'message' => 'Jūs neturite teisės į šį puslapį.'];
+        $error = ['code' => 403, 'message' => 'You are not authorized to access this page.'];
         return view("pages.error", compact('error'));
     }
 
@@ -88,7 +88,7 @@ class SkateController extends Controller
         if (Gate::allows('edit', $skate)) {
             return view('pages.view-remove', compact('skate'));
         }
-        $error = ['code' => 403, 'message' => 'Jūs neturite teisės į šį puslapį.'];
+        $error = ['code' => 403, 'message' => 'You are not authorized to access this page.'];
         return view("pages.error", compact('error'));
     }
 
@@ -98,12 +98,23 @@ class SkateController extends Controller
             $skate->delete();
             return redirect('/');
         }
-        $error = ['code' => 403, 'message' => 'Jūs neturite teisės į šį puslapį.'];
+        $error = ['code' => 403, 'message' => 'You are not authorized to access this page.'];
         return view("pages.error", compact('error'));
     }
 
     public function dashboard() {
+        $dashboard = Skate::where('owner', Auth::id())->get();
+        return view('dashboard', compact('dashboard'));
+    }
+    public function skateboards() {
         $skates = Skate::where('owner', Auth::id())->get();
-        return view('dashboard', compact('skates'));
+        return view('skateboards', compact('skates'));
+    }
+
+    public function perform()
+    {
+        Auth::logout();
+        
+        return redirect('/');
     }
 }

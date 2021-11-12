@@ -65,7 +65,7 @@ svg {
           </svg>
 {{-- <h1>You are not allowed to enter here</h1> --}}
 <h1>{{ $error['message'] }}</h1>
-<h2>Grįžti <a target="_blank" href="/">atgal</a>!</h2>
+<h2>Return <a target="_blank" href="/">back</a>!</h2>
 
 <script>
 var root = document.documentElement;

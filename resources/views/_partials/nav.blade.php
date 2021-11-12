@@ -13,14 +13,14 @@
         <div class="collapse navbar-collapse flex-grow-1 text-right" id="myNavbar7">
             <ul class="navbar-nav ms-auto flex-nowrap">
                 <li class="nav-item">
-                    <a href="/new-skate" class="nav-link">Sukurti</a>
-                </li>
-                {{-- <li class="nav-item">
-                    <a href="#" class="nav-link">About</a>
+                    <a href="/new-skate" class="nav-link">Create</a>
                 </li>
                 <li class="nav-item">
-                    <a href="#" class="nav-link">Contact</a>
-                </li> --}}
+                    <a href="/categories" class="nav-link">Categories</a>
+                </li>
+                <li class="nav-item">
+                    <a href="/skateboards" class="nav-link">Skateboards</a>
+                </li> 
                 @guest
                 <li class="nav-item">
                     <a href="/login" class="nav-link">Login</a>
@@ -32,7 +32,10 @@
                 @endguest
                 @auth
                 <li class="nav-item">
-                    <a href="/dashboard" class="nav-link">Panel</a>
+                    <a href="/dashboard" class="nav-link">Admin</a>
+                </li> 
+                <li class="nav-item">
+                    <a href="/logout" class="nav-link">Logout</a>
                 </li> 
                 @endauth
             </ul>
