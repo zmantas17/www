@@ -25,14 +25,14 @@
             </div>
             <div class="mb-3">
                 <label for="category" class="form-label">Choose category</label>
-                <select class="form-select" name="category" id="category" aria-label="Default select example">
+                <select class="form-select" name="category" id="category">
                 @foreach (App\Models\Category::all() as $category)
                     <option value="{{ $category->id }}">{{$category->name}}</option>
                 @endforeach
                 </select>
             </div>
             <div class="text-center">
-                <button type="submit" class="btn btn-primary border-0">Pateikti</button>
+                <button type="submit" class="btn btn-primary border-0">Submit</button>
             </div>
         </form>
     </div>

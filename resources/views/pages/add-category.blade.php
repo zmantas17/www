@@ -11,7 +11,7 @@
             </div>
             
             <div class="text-center">
-                <button type="submit" class="btn btn-primary border-0">Sukurti</button>
+                <button type="submit" class="btn btn-primary border-0">Submit</button>
             </div>
             
         </form>

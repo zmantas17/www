@@ -6,9 +6,9 @@
     <div class="card-body">
         <h2 class="fs-4 fw-bold">{{$category->name}}</h2>
         <div class="card-header border-0">
-            <p>Ar tikrai norite ištrinti šią kategoriją?</p>
-            <a href="/category/{{ $category->id }}/delete/confirm" class="btn btn-success my-2 border">Taip</a>
-            <a href="/category/{{ $category->id }}" class="btn btn-danger my-2 mx-4 border">Ne</a>
+            <p>Are you sure you want to delete this category?</p>
+            <a href="/category/{{ $category->id }}/delete/confirm" class="btn btn-success my-2 border">Yes</a>
+            <a href="/category/{{ $category->id }}" class="btn btn-danger my-2 mx-4 border">No</a>
         </div>
     
 @endsection

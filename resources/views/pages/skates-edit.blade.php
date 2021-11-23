@@ -23,6 +23,14 @@
             <div class=" bg-white mb-3">
                 <input type="file" class="form-control py-2 border border-radius" name="img">
             </div>
+            <div class="mb-3">
+                <label for="category" class="form-label">Choose category</label>
+                <select class="form-select" name="category" id="category" aria-label="Default select example">
+                @foreach (App\Models\Category::all() as $category)
+                    <option value="{{ $category->id }}">{{$category->name}}</option>
+                @endforeach
+                </select>
+            </div>
             <div class="text-center">
                 <button type="submit" class="btn btn-primary border-0">Submit</button>
             </div>

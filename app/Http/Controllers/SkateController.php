@@ -60,16 +60,16 @@ class SkateController extends Controller
         $error = ['code' => 403, 'message' => 'You are not authorized to access this page.'];
         return view("pages.error", compact('error'));
     }
-
     public function updateSkate(Request $request, Skate $skate) {
         if (Gate::allows('edit', $skate)) {
             $validated = $request->validate([
                 'title' => 'required|max:255',
                 'description' => 'required',
-                'price' => 'required'
+                'price' => 'required',
+                'category' => 'required'
             ]);
 
-            Skate::where('id', $skate->id)->update($request->only(['title', 'description', 'price']));
+            Skate::where('id', $skate->id)->update($request->only(['title', 'description', 'price', 'category']));
             
             if($request->file('img') != null) {
                 Storage::delete('public/'.$skate->img);

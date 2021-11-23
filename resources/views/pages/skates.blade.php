@@ -3,7 +3,9 @@
 
 <div class="container d-flex justify-content-center mt-5">
     <div class="card bg-dark border-radius text-white text-center border" style="width: 18rem;">
-    <div class="card-header bg-transparent border-bottom">{{ App\Models\Category::where('id', $skate->category)->get()[0]->name}}</div>
+    <div class="card-header border-bottom bg-transparent py-1">
+    {{ App\Models\Category::where('id', $skate->category)->get()[0]->name}}
+    </div>
     <img class="card-img-top p-3" src="{{ url('storage/'.$skate->img) }}" alt="Photo">
     <div class="card-body">
         <h2 class="fs-4 fw-bold">{{$skate->title}}</h2>
@@ -14,7 +16,7 @@
             <a href="/skate/{{ $skate->id }}/delete/ask" class="btn btn-danger my-2  mx-2 border">Delete</a>
         @endif
     </div>
-        <div class="card-header bg-transparent border-top ">{{App\Models\User::where('id', $skate->owner)->get()[0]->name}}</div>
+        <div class="card-header bg-transparent border-top border-0">{{App\Models\User::where('id', $skate->owner)->get()[0]->name}}</div>
     </div>
 
 </div>
