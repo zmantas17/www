@@ -16,14 +16,17 @@
                         <thead>
                             <tr class=" border border-bottom-0">
                                 <th scope="col">Title</th>
-                                <th scope="col mr-3">Action</th>
+                                <th scope="col">Count</th>
+                                <th scope="col">Action</th>
                             </tr>
                         </thead>
                         <tbody>
                         @foreach($categories as $category)
                             <tr>
-                                {{-- <td>{{App\Models\User::where('id', $category->owner)->get()[0]->name}}</td> --}}
                                 <td>{{$category->name}}</td>
+                                <td>
+                                    {{ App\Models\Skate::where('category', $category->id)->get()->count() }}
+                                </td>
                                 <td>
                                     <a href="/category/{{ $category->id }}" class="btn btn-success"><i class="fas fa-arrow-alt-circle-right"></i></a>
                                     <a href="/category/{{ $category->id }}/edit" class="btn btn-warning"><i class="fas fa-pencil-alt"></i></a>
