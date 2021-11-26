@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Category;
 use App\Models\Registration;
 use App\Models\Skate;
 use Illuminate\Http\Request;
@@ -13,7 +14,7 @@ class SkateController extends Controller
 {
     public function __construct()
     {
-        $this->middleware('auth', ['except'=>['index', 'showSkates']]);
+        $this->middleware('auth', ['except'=>['index', 'showSkate']]);
     }
 
     public function index()
@@ -27,7 +28,8 @@ class SkateController extends Controller
         return view("pages.add-product");
     }
 
-    public function storeSkates(Request $request){
+    public function storeSkates(Request $request)
+    {
         $validated = $request->validate([
             'title' => 'required|max:255',
             'description' => 'required',
@@ -49,18 +51,21 @@ class SkateController extends Controller
         return redirect("/");
     }
 
-    public function showSkates(Skate $skate){
+    public function showSkate(Skate $skate)
+    {
         return view("pages.skates", compact('skate'));
     }
     
-    public function viewEditSkateForm(Skate $skate){
+    public function viewEditSkateForm(Skate $skate)
+    {
         if (Gate::allows('edit', $skate)) {
             return view("pages.skates-edit", compact('skate'));
         }
         $error = ['code' => 403, 'message' => 'You are not authorized to access this page.'];
         return view("pages.error", compact('error'));
     }
-    public function updateSkate(Request $request, Skate $skate) {
+    public function updateSkate(Request $request, Skate $skate)
+    {
         if (Gate::allows('edit', $skate)) {
             $validated = $request->validate([
                 'title' => 'required|max:255',
@@ -84,7 +89,8 @@ class SkateController extends Controller
         return view("pages.error", compact('error'));
     }
 
-    public function viewRemoveSkateForm(Skate $skate) {
+    public function viewRemoveSkateForm(Skate $skate) 
+    {
         if (Gate::allows('edit', $skate)) {
             return view('pages.view-remove', compact('skate'));
         }
@@ -92,7 +98,8 @@ class SkateController extends Controller
         return view("pages.error", compact('error'));
     }
 
-    public function deleteSkate(Skate $skate){
+    public function deleteSkate(Skate $skate)
+    {
         if (Gate::allows('delete', $skate)) {
             Storage::delete('public/'.$skate->img);
             $skate->delete();
@@ -102,11 +109,13 @@ class SkateController extends Controller
         return view("pages.error", compact('error'));
     }
 
-    public function dashboard() {
+    public function dashboard() 
+    {
         $dashboard = Skate::where('owner', Auth::id())->get();
         return view('dashboard', compact('dashboard'));
     }
-    public function skateboards() {
+    public function skateboards() 
+    {
         $skates = Skate::where('owner', Auth::id())->get();
         return view('skateboards', compact('skates'));
     }
@@ -117,4 +126,5 @@ class SkateController extends Controller
         
         return redirect('/');
     }
+
 }

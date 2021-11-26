@@ -14,11 +14,12 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
+
 // Product
 Route::get('/', [SkateController::class, 'index']);
 Route::get('/new-skate', [SkateController::class, 'newSkateForm']);
 Route::post('/store-skate', [SkateController::class, 'storeSkates']);
-Route::get('/skate/{skate}', [SkateController::class, 'showSkates']);
+Route::get('/skate/{skate}', [SkateController::class, 'showSkate']);
 Route::get('/skate/{skate}/edit', [SkateController::class, 'viewEditSkateForm']);
 Route::patch('/skate/{skate}/edit', [SkateController::class, 'updateSkate']);
 Route::get('/skate/{skate}/delete/ask', [SkateController::class, 'viewRemoveSkateForm']);
@@ -32,6 +33,7 @@ Route::get('/category/{category}/delete/ask', [CategoryController::class, 'viewR
 Route::get('/category/{category}/delete/confirm', [CategoryController::class, 'deleteCategory']);
 Route::patch('/category/{category}/edit', [CategoryController::class, 'updateCategory']);
 Route::get('/category/{category}/edit', [CategoryController::class, 'viewCategory']);
+Route::get('/category/{category}', [CategoryController::class, 'viewSkatesByCategory']);
 
 // Dashboard
 Route::get('/dashboard', [SkateController::class, 'dashboard'])->name('dashboard');
