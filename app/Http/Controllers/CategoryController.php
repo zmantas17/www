@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Category;
+use App\Models\Skate;
 use Gate;
 use Illuminate\Http\Request;
 
@@ -10,11 +11,11 @@ class CategoryController extends Controller
 {
     public function __construct()
     {
-        $this->middleware('auth');
+        $this->middleware('auth', ['except'=> [ 'viewSkatesByCategory']]);
     }
 
     public function index(){
-        $categories = Category::paginate(10);
+        $categories = Category::all();
         return view('categories', compact('categories'));
     }
 
@@ -61,4 +62,9 @@ class CategoryController extends Controller
         $error = ['code' => 403, 'message' => 'Jūs neturite teisės į šį puslapį.'];
         return view("pages.error", compact('error'));
     }
+
+    public function viewSkatesByCategory(Category $category){
+        $skates = Skate::where('category', $category->id)->paginate(10)->withQueryString();
+        return view("pages.skates-by-category", compact('skates', 'category'));
+    } 
 }

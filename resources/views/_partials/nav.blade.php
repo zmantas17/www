@@ -12,6 +12,16 @@
         </div>
         <div class="collapse navbar-collapse flex-grow-1 text-right" id="myNavbar7">
             <ul class="navbar-nav ms-auto flex-nowrap">
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Categories
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    @foreach(App\Models\Category::all() as $category)
+                        <a class="dropdown-item" href="/category/{{ $category->id }}">{{$category->name}}</a>
+                    @endforeach
+                    </div>
+                </li>
                 @guest
                 <li class="nav-item">
                     <a href="/login" class="nav-link">Login</a>
@@ -22,14 +32,15 @@
                 </li> 
                 @endguest
                 @auth
-                <li class="nav-item">
-                    <a href="/categories" class="nav-link">Categories</a>
-                </li>
-                <li class="nav-item">
-                    <a href="/skateboards" class="nav-link">Skateboards</a>
-                </li> 
-                <li class="nav-item">
-                    <a href="/dashboard" class="nav-link">Admin</a>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Admin
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <a class="dropdown-item" href="/dashboard">Admin</a>
+                        <a class="dropdown-item" href="/skateboards">Skateboards</a>
+                        <a class="dropdown-item" href="/categories">Categories</a>
+                    </div>
                 </li>
                 <li class="nav-item">
                     <a href="/logout" class="nav-link">Logout</a>
