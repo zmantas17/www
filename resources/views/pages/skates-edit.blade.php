@@ -27,7 +27,11 @@
                 <label for="category" class="form-label">Choose category</label>
                 <select class="form-select" name="category" id="category" aria-label="Default select example">
                 @foreach (App\Models\Category::all() as $category)
-                    <option value="{{ $category->id }}">{{$category->name}}</option>
+                    @if($category->id == $skate->category)
+                        <option value="{{ $category->id }}" selected>{{$category->name}}</option>
+                    @else
+                        <option value="{{ $category->id }}">{{$category->name}}</option>
+                    @endif
                 @endforeach
                 </select>
             </div>
