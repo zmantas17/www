@@ -13,14 +13,14 @@
         <div class="collapse navbar-collapse flex-grow-1 text-right" id="myNavbar7">
             <ul class="navbar-nav ms-auto flex-nowrap">
                 <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    Categories
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        Categories
                     </a>
-                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                     @foreach(App\Models\Category::all() as $category)
                         <a class="dropdown-item" href="/category/{{ $category->id }}">{{$category->name}}</a>
                     @endforeach
-                    </div>
+                    </ul>
                 </li>
                 @guest
                 <li class="nav-item">
@@ -33,14 +33,14 @@
                 @endguest
                 @auth
                 <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    Admin
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        Admin
                     </a>
-                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                         <a class="dropdown-item" href="/dashboard">Admin</a>
                         <a class="dropdown-item" href="/skateboards">Skateboards</a>
                         <a class="dropdown-item" href="/categories">Categories</a>
-                    </div>
+                    </ul>
                 </li>
                 <li class="nav-item">
                     <a href="/logout" class="nav-link">Logout</a>
