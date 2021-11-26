@@ -3,7 +3,9 @@
 
     <div class="container d-flex justify-content-center mt-5">
     <div class="card bg-dark border-radius text-white text-center border" style="width: 18rem;">
+    @if(App\Models\Category::where('id', $skate->category)->get()->count() != 0)
     <div class="card-header bg-transparent border-bottom">{{ App\Models\Category::where('id', $skate->category)->get()[0]->name}}</div>
+    @endif
     <img class="card-img-top p-3" src="{{ url('storage/'.$skate->img) }}" alt="Photo">
     <div class="card-body">
         <h2 class="fs-4 fw-bold">{{$skate->title}}</h2>
@@ -18,6 +20,6 @@
         @endif
 
    </div>
-        <div class="card-footer bg-transparent border-top ">{{App\Models\User::where('id', $skate->owner)->get()[0]->name}}</div>
+        <div class="card-header bg-transparent border-top border-0"><span class="text-warning fw-bold">Seller:</span> {{App\Models\User::where('id', $skate->owner)->get()[0]->name}}</div>
     </div>
 @endsection
