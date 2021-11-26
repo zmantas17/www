@@ -30,7 +30,7 @@
             @endforeach
         </div>
     </div>
+    {{ $skates->links('_partials.links') }}
     <div class="mb-5"></div>
 </div>
-    {{ $skates->links('_partials.links') }}
 @endsection
