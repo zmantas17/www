@@ -13,7 +13,7 @@
                 <div class="mt-3 border-b border-gray-200">
                     <table class="table table-hover table-dark">
                         <thead>
-                            <tr class=" border border-bottom-0">
+                            <tr class="border border-bottom-0">
                                 <th scope="col">Title</th>
                                 <th scope="col">Price</th>
                                 <th scope="col">Action</th>
@@ -23,7 +23,7 @@
                         @foreach($skates as $skate)
                             <tr>
                                 <td>{{$skate->title}}</td>
-                                <td>{{ $skate->price }}€</td>
+                                <td>{{$skate->price }}€</td>
                                 <td>
                                     <a href="/skate/{{$skate->id}}" class="btn btn-success"><i class="fas fa-arrow-alt-circle-right"></i></a>
                                     <a href="/skate/{{ $skate->id }}/edit" class="btn btn-warning"><i class="fas fa-pencil-alt"></i></a>
